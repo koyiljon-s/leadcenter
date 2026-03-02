@@ -1,11 +1,19 @@
-const http = require('http');
+import express from "express";
 
-const server = http.createServer((request, response) => {
-    response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-    response.end('Message in the bottle received! Loud and clear, captain! 🫡'); 
+const app = express();
+
+app.use(express.json());
+
+app.get("/", (req, res) => res.send("LeadCenter API running"))
+
+// Health endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
   });
+});
 
 
-  server.listen(3000, () => {
-    console.log('Server running at http://localhost:3000/');
-  });
+
+export default app;
