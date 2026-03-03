@@ -9,5 +9,5 @@ export const logger = pino({
             translateTime: 'SYS:standard',
             ignore: 'pid,hostname',
         },
-    },
+    }
 });
