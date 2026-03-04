@@ -6,6 +6,13 @@ export const env = {
 
   mongoURI: process.env.MONGO_URI,
 
+  // JWT
+  jwtSecret: process.env.JWT_SECRET || "supersecret",
+
+  // Admin
+  adminUsername: (process.env.ADMIN_USERNAME || "").trim(),
+  adminPassword: (process.env.ADMIN_PASSWORD || "").trim(), // Hashed
+
   // AWS S3
   awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,        
   awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY, 
@@ -15,3 +22,6 @@ export const env = {
 };
 
 if (!env.mongoURI) throw new Error("MONGO_URI is not defined. Put it in backend/.env");
+if (!env.adminUsername || !env.adminPassword) {
+  console.warn("ADMIN_USERNAME or ADMIN_PASSWORD is not defined. Login will fail.");
+}

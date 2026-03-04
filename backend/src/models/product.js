@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema(
 
     priceUZS: { type: Number, required: true, min: 0 },
 
-    images: { type: [s3ImageSchema], default: [] },
+    images: { type: [s3FileSchema], default: [] },
 
     isActive: { type: Boolean, default: true },
   },
