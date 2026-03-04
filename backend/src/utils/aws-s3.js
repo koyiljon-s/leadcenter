@@ -6,6 +6,10 @@ import { env } from "../config/env.js";
 
 export const s3 = new S3Client({
   region: env.awsRegion,
+  credentials: {
+    accessKeyId: env.awsAccessKeyId,
+    secretAccessKey: env.awsSecretAccessKey,
+  },
 });
 
 export function buildS3Key({ folder = env.s3Prefix || "products/", ext }) {
